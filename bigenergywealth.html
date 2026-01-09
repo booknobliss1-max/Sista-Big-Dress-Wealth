@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        :root {
+            --bg: #f8f9fa;
+            --text: #2d3436;
+            --blue: #0984e3;
+            --green: #00b894;
+            --orange: #e17055;
+            --red: #d63031;
+            --card-bg: #ffffff;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            padding: 40px;
+            line-height: 1.6;
+        }
+
+        h2 { border-bottom: 2px solid var(--text); padding-bottom: 10px; margin-bottom: 30px; }
+
+        /* 1. Definition Grid */
+        .def-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 60px;
+        }
+
+        .def-card {
+            background: var(--card-bg);
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            border-left: 5px solid var(--blue);
+        }
+
+        .def-card h3 { margin-top: 0; font-size: 1.1rem; color: var(--blue); }
+
+        /* 2. FIP Flappable Axis Cards */
+        .fip-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .fip-card {
+            perspective: 1000px;
+            height: 350px;
+            cursor: pointer;
+        }
+
+        .fip-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transform-style: preserve-3d;
+        }
+
+        .fip-card:hover .fip-inner {
+            transform: rotateY(180deg);
+        }
+
+        .front, .back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 15px;
+            padding: 30px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        .back {
+            transform: rotateY(180deg);
+            background-color: #fff;
+        }
+
+        /* Color Coding */
+        .card-blue .front { background: var(--blue); color: white; }
+        .card-green .front { background: var(--green); color: white; }
+        .card-orange .front { background: var(--orange); color: white; }
+        .card-red .front { background: var(--red); color: white; }
+
+        .label { font-weight: bold; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 1px; margin-bottom: 5px; opacity: 0.8; }
+        .practice-list { list-style: none; padding: 0; }
+        .practice-list li { margin-bottom: 10px; padding-left: 20px; position: relative; }
+        .practice-list li::before { content: '→'; position: absolute; left: 0; color: var(--blue); }
+
+    </style>
+    <title>Sista Wealth Maintenance Dashboard</title>
+</head>
+<body>
+
+    <h2>🌐 Wealth Maintenance Definitions</h2>
+    <div class="def-grid">
+        <div class="def-card">
+            <h3>Tax-Efficient Strategy</h3>
+            <p>Reducing taxes legally while keeping life simple and aligned with long-term goals.</p>
+        </div>
+        <div class="def-card" style="border-left-color: var(--green);">
+            <h3>Tax-Loss Harvesting</h3>
+            <p>Selling low to create a tax benefit, then reinvesting to stay on track.</p>
+        </div>
+        <div class="def-card" style="border-left-color: var(--orange);">
+            <h3>Trust Structures</h3>
+            <p>Solving real family needs and protecting legacy—not just tax avoidance.</p>
+        </div>
+        <div class="def-card" style="border-left-color: var(--red);">
+            <h3>M&A Transitions</h3>
+            <p>Managing the tax and liquidity events when companies combine or sell.</p>
+        </div>
+    </div>
+
+    <h2>🧭 FIP Axis Cards</h2>
+    <div class="fip-container">
+
+        <div class="fip-card card-blue">
+            <div class="fip-inner">
+                <div class="front">
+                    <span class="label">Focus</span>
+                    <h2>Tax-Efficient Strategy</h2>
+                    <p>Making smart, legal choices that reduce tax drag and support well-being.</p>
+                    <small>Hover to Flip →</small>
+                </div>
+                <div class="back">
+                    <span class="label">Intention</span>
+                    <p><i>"I want my money to work cleanly, clearly, and efficiently."</i></p>
+                    <hr>
+                    <span class="label">Practice</span>
+                    <ul class="practice-list">
+                        <li>Review account asset location</li>
+                        <li>Maximize tax-advantaged accounts</li>
+                        <li>Hold long-term positions</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="fip-card card-green">
+            <div class="fip-inner">
+                <div class="front">
+                    <span class="label">Focus</span>
+                    <h2>Tax-Loss Harvesting</h2>
+                    <p>Using market dips as strategic opportunities to strengthen position.</p>
+                    <small>Hover to Flip →</small>
+                </div>
+                <div class="back">
+                    <span class="label">Intention</span>
+                    <p><i>"I stay steady and intentional, even when markets move."</i></p>
+                    <hr>
+                    <span class="label">Practice</span>
+                    <ul class="practice-list">
+                        <li>Identify down positions</li>
+                        <li>Harvest losses to offset gains</li>
+                        <li>Reinvest in similar assets</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="fip-card card-orange">
+            <div class="fip-inner">
+                <div class="front">
+                    <span class="label">Focus</span>
+                    <h2>Trust Structures</h2>
+                    <p>Protecting family and stability through structures that serve real needs.</p>
+                    <small>Hover to Flip →</small>
+                </div>
+                <div class="back">
+                    <span class="label">Intention</span>
+                    <p><i>"I build systems that support my people and honor my lineage."</i></p>
+                    <hr>
+                    <span class="label">Practice</span>
+                    <ul class="practice-list">
+                        <li>Review family financial needs</li>
+                        <li>Update beneficiaries regularly</li>
+                        <li>Consult for compliance</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>
